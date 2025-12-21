@@ -14,49 +14,39 @@ Policy Comparison: Compares Max_Accuracy, Max_Latency, and D2D_Utility strategie
 
 Energy Modeling: Calculates Joule consumption based on transmission power and compute intensity.
 
-📊 Key Findings (Experimental Results)
+📊 Experimental Results
 
-Based on simulation runs of 1,000 tasks:
+Instead of traditional pathing, the simulator compared three major policy outcomes:
 
-Policy
+Max Accuracy Policy
 
-Avg. Accuracy
+Avg. Accuracy: 0.9434
 
-Avg. Latency (s)
+Avg. Latency: 0.542s
 
-Avg. Energy (J)
+Avg. Energy: 0.1250J
 
-Decision Trend
+Trend: Heavily reliant on Edge Cloud.
 
-Max Accuracy
+Max Latency Policy
 
-0.9434
+Avg. Accuracy: 0.8821
 
-0.542
+Avg. Latency: 0.410s
 
-0.1250
+Avg. Energy: 0.0810J
 
-Edge Cloud Heavy
+Trend: Mixed pathing between Local and Edge.
 
-Max Latency
+D2D Utility Policy (Optimized)
 
-0.8821
+Avg. Accuracy: 0.9215
 
-0.410
+Avg. Latency: 0.231s
 
-0.0810
+Avg. Energy: 0.0624J
 
-Mixed Pathing
-
-D2D Utility
-
-0.9215
-
-0.231
-
-0.0624
-
->90% D2D Proxy
+Trend: Over 90% of tasks routed through D2D Proxy.
 
 Conclusion: The D2D Utility policy achieved the best balance, reducing latency by ~50% compared to the Edge-heavy approach while maintaining high accuracy.
 
@@ -64,13 +54,13 @@ Conclusion: The D2D Utility policy achieved the best balance, reducing latency b
 
 Clone the repository:
 
-git clone [https://github.com/yourusername/secure-offloading-simulator.git](https://github.com/yourusername/secure-offloading-simulator.git)
+git clone [https://github.com/hunainaghai/secure-offloading-simulator.git](https://github.com/hunainaghai/secure-offloading-simulator.git)
 cd secure-offloading-simulator
 
 
 Install dependencies:
 
-pip install pandas numpy matplotlib
+pip install pandas numpy
 
 
 Run the simulation:
