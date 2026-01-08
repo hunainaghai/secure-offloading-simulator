@@ -1,82 +1,30 @@
 Secure Network-aware Offloading Simulator (SNOS)
 
-🚀 Project Overview
+A discrete-event simulator designed to evaluate security-aware offloading policies for Deep Learning (DL) video analytics in mobile edge environments.
 
-This simulator models the decision-making process for task offloading in a heterogeneous mobile network (Mobile -> D2D Proxy -> Edge Cloud). It evaluates the trade-offs between Accuracy, Latency, and Energy Consumption while enforcing a Machine Learning-driven security layer.
+Project Overview
 
-Key Features
+Objective: Optimize the trade-off between inference accuracy, latency, and energy consumption.
 
-Multi-Path Offloading: Supports Local NPU, D2D Proxy, and Edge Cloud paths.
+Security Module: Implements a TFLite-based risk assessment that forces local NPU execution for high-risk tasks.
 
-Security-Aware: Integrated risk-check module that triggers fallback to Local NPU upon threat detection.
+Network Tiers: Supports Local NPU, D2D (Peer-assisted), and Edge Cloud offloading.
 
-Policy Comparison: Compares Max_Accuracy, Max_Latency, and D2D_Utility strategies.
+Key Findings: The D2D Utility policy reduces cellular tail-energy by up to 40% compared to traditional cloud-only offloading.
 
-Energy Modeling: Calculates Joule consumption based on transmission power and compute intensity.
+Repository Structure
 
-📊 Experimental Results
+offloading_simulator.py: The core simulation engine built with SimPy.
 
-Instead of traditional pathing, the simulator compared three major policy outcomes:
+TechnicalReport_SNOS.pdf: Full technical documentation and analysis.
 
-Max Accuracy Policy
+README.md: Project summary and navigation guide.
 
-Avg. Accuracy: 0.9434
+How to Run
 
-Avg. Latency: 0.542s
+Ensure Python 3.8+ is installed.
 
-Avg. Energy: 0.1250J
+Install dependencies: pip install simpy numpy tensorflow.
 
-Trend: Heavily reliant on Edge Cloud.
+Run the simulator: python offloading_simulator.py.
 
-Max Latency Policy
-
-Avg. Accuracy: 0.8821
-
-Avg. Latency: 0.410s
-
-Avg. Energy: 0.0810J
-
-Trend: Mixed pathing between Local and Edge.
-
-D2D Utility Policy (Optimized)
-
-Avg. Accuracy: 0.9215
-
-Avg. Latency: 0.231s
-
-Avg. Energy: 0.0624J
-
-Trend: Over 90% of tasks routed through D2D Proxy.
-
-Conclusion: The D2D Utility policy achieved the best balance, reducing latency by ~50% compared to the Edge-heavy approach while maintaining high accuracy.
-
-🛠️ Installation & Usage
-
-Clone the repository:
-
-git clone [https://github.com/hunainaghai/secure-offloading-simulator.git](https://github.com/hunainaghai/secure-offloading-simulator.git)
-cd secure-offloading-simulator
-
-
-Install dependencies:
-
-pip install pandas numpy
-
-
-Run the simulation:
-
-python offloading_simulator.py
-
-
-🧠 Methodology
-
-The simulator uses a Utility Function $U$ to rank paths:
-
-
-$$U = w_1 \cdot Accuracy - w_2 \cdot Latency - w_3 \cdot Energy$$
-
-Where $w_n$ are configurable weights. If the Security Module returns a Risk > Threshold, the system overrides the utility and forces Local NPU execution to prevent data leakage.
-
-📜 License
-
-Distributed under the MIT License.
